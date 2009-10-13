@@ -1,0 +1,9 @@
+= error_messages_for @exclusion
+
+= form_for @exclusion, :action => resource(@site, :exclusions), :method => :post do
+  %legend
+    == Unsubscribe from #{ @site.url }
+  %fieldset
+    = text_field :email, :label => "E-Mail"
+    %br
+    =submit "Unsubscribe"
