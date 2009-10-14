@@ -8,7 +8,9 @@ class Log
   property :type, String
   property :data, String
 
+  property :created_at, DateTime
+
   belongs_to :site
   belongs_to :exclusion
-  belongs_to :user  
+  belongs_to :user
 end

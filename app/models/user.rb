@@ -13,5 +13,12 @@ class User
   
   property :id,     Serial
   property :login,  String
+
+  property :created_at, DateTime
+
+  has n, :user_site_permissions
+  has n, :sites, :through => :user_site_permissions
+
+  validates_is_unique :login
   
 end
