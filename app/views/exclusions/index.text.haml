@@ -1,3 +1,8 @@
 == Exclusions for #{@site.url} -- #{Time.now} -- Generated for #{@current_user.login}
+== Unsubscribe link: http://unsub.#{@site.url}?ref=#{@current_user.id}
+To test exclusion scrubbing, look for test@test.com
+- tests = ["keith@ashleymadison.com", "test@test.com"]
+- tests.each do |t| 
+  = Digest::MD5.hexdigest(t)
 = @exclusions.map { |e| e.email_hash }.join("\n")
   
