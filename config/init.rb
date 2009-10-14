@@ -21,4 +21,6 @@ end
  
 Merb::BootLoader.after_app_loads do
   # This will get executed after your app's classes have been loaded.
+  Merb::Plugins.config[:merb_recaptcha][:public_key] = "6Lcx-AcAAAAAAAWZMMCko0qAdOpIAO07x0h9Tq33"
+  Merb::Plugins.config[:merb_recaptcha][:private_key] = "6Lcx-AcAAAAAAJzvtnIxoxsyPX9AslQXF1kUXW0H"
 end

@@ -5,5 +5,8 @@
     == Unsubscribe from #{ @site.url }
   %fieldset
     = text_field :email, :label => "E-Mail"
+    = hidden_field :name => "ref", :value => params[:ref]
+    %br
+    = recaptcha_tags
     %br
     =submit "Unsubscribe"
