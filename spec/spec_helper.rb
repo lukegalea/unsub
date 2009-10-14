@@ -13,6 +13,10 @@ require "spec" # Satisfies Autotest and anyone else not using the Rake tasks
 # here again, Merb will do it for you
 Merb.start_environment(:testing => true, :adapter => 'runner', :environment => ENV['MERB_ENV'] || 'test')
 
+require 'dm-sweatshop'
+require File.join(File.dirname(__FILE__), 'spec_fixtures')
+
+
 Spec::Runner.configure do |config|
   config.include(Merb::Test::ViewHelper)
   config.include(Merb::Test::RouteHelper)
@@ -20,6 +24,23 @@ Spec::Runner.configure do |config|
   
   config.before(:all) do
     DataMapper.auto_migrate! if Merb.orm == :datamapper
+    User.generate!
+    Site.generate!
+    UserSitePermission.generate!
+    raise "FUCK" if User.count == 0
   end
   
+end
+
+Merb::Test.add_helpers do  
+  def login    
+    request("/login", {
+      :method => "PUT",
+      :params => {
+        :login => "ashleymadison",
+        :password => "password"
+      }
+    })
+  end
+
 end
