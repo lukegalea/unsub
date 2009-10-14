@@ -29,11 +29,8 @@ Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do  
   resources :sites do
     resources :exclusions
-  end
-  
-  # RESTful routes
-  # resources :posts
-  
+  end  
+    
   # Adds the required routes for merb-auth using the password slice
   slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
 
@@ -41,8 +38,20 @@ Merb::Router.prepare do
   # This is fine for most cases.  If you're heavily using resource-based
   # routes, you may want to comment/remove this line to prevent
   # clients from calling your create or destroy actions with a GET
-  default_routes
+  #default_routes
   
   # Change this for your home page to be available at /
   # match('/').to(:controller => 'whatever', :action =>'index')
+
+ # sites = { 1 => "establishedmen.com", 2 => "hotornot.com", 3 => "ashleymadison.com", 4 => "cougarlife.com", 5 => "arrangementseekers.com" }
+  #Site.all.each do |s|
+  #  match(:domain => s.url) do
+  #    match("/").redirect("/sites/#{s.id}/exclusions/new")
+  #  end
+  #end
+  Site.all.each do |s|
+    match(:domain => s.url) do
+      match("/").to(:controller => "exclusions", :action => 'new', :site_id => s.id)
+    end
+  end
 end
