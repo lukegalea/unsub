@@ -50,8 +50,8 @@ Merb::Router.prepare do
   #  end
   #end
   Site.all.each do |s|
-    match(:domain => s.url) do
-      match("/").to(:controller => "exclusions", :action => 'new', :site_id => s.id)
+      match(:domain => s.url) do
+        match("/").to(:controller => "exclusions", :action => 'new', :site_id => s.id)
+      end
     end
-  end
 end
