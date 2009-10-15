@@ -1,5 +1,5 @@
 migration 2, :add_default_sites  do
-  URLS = %w( establishedmen.com hotornot.com ashleymadison.com cougarlife.com arrangementseekers.com )
+  URLS = %w( establishedmen.com hotornot.com ashleymadison.com cougarlife.com arrangementseekers.com eroticy.com swappernet.com )
   
   up do
     URLS.each do |url|
