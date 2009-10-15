@@ -3,6 +3,7 @@ class Site
   
   property :id, Serial
   property :url, String, :nullable => false
+  property :name, String, :nullable => false
 
   property :created_at, DateTime
 

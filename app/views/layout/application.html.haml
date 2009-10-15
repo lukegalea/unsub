@@ -1,10 +1,23 @@
 !!! Strict
-%html{ "xml:lang" => "en-us", :lang => "en-us", :xmlns => "http://www.w3.org/1999/xhtml" }
+- site_name = @site ? @site.name : "Avid Life Media"
+- site_url = @site ? @site.url : "avidlifemedia.com"
+%html{html_attrs}
   %head
-    %title
-      Fresh Merb App
-    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }
-    %link{ :href => "/stylesheets/master.css", :rel => "stylesheet", :type => "text/css", :media => "screen", :charset => "utf-8" }
-  %body
-    - #= message[:notice]
-    = catch_content :for_layout
+    %title== #{ site_name } &mdash; Unsubscribe
+    %meta{'http-equiv' => 'content-type', :content => 'text/html; charset=utf-8'}/
+    %meta{'http-equiv' => 'X-UA-Compatible', :content => 'IE=EmulateIE7'}/ 
+    %link{:href => "/stylesheets/master.css", :rel => "stylesheet", :type => "text/css", :media => "screen"}
+    %script{:src => "/javascripts/application.js", :type => "text/javascript"}
+  %body{ :class => site_name.gsub(" ", "").underscore }
+    #header.section
+      .container  
+        %h1= link_to site_name, 'http://' + site_url
+    #content.section
+      .container  
+        - #= message[:notice]
+        = catch_content :for_layout
+    #footer.section
+      .container  
+        %small 
+          &copy; Copyright 2009 
+          = link_to site_name, 'http://' + site_url

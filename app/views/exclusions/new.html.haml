@@ -1,12 +1,12 @@
+%h2 Unsubscribe your email address
+%p Please complete the form below to unsubscribe and stop receiving future emails and promotions.
 = error_messages_for @exclusion
-
 = form_for @exclusion, :action => resource(@site, :exclusions), :method => :post do
-  %legend
-    == Unsubscribe from #{ @site.url }
   %fieldset
-    = text_field :email, :label => "E-Mail"
-    = hidden_field :name => "ref", :value => params[:ref]
-    %br
-    = recaptcha_tags
-    %br
-    =submit "Unsubscribe"
+    %legend Unsubscribe Form    
+    %ol
+      %li.clearfix
+        = text_field :email, :label => "E-Mail"
+        = hidden_field :name => "ref", :value => params[:ref]
+      %li= recaptcha_tags
+      %li.clearfix= submit "Unsubscribe"

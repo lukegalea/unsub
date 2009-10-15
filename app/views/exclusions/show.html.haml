@@ -1,4 +1,5 @@
-You have been unsubscribed.
-
-Continue to 
-= @site.url
+.notice
+  %h2 You have been unsubscribed.
+  %p 
+    Continue to 
+    = link_to @site.name, 'http://www.' + @site.url
