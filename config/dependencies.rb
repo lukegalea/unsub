@@ -36,4 +36,6 @@ dependency "merb-haml", merb_gems_version
 
 dependency "merb-recaptcha", "~> 1.0.0", :require_as => "merb-recaptcha"
 
+dependency "merb-haml"
+
 require "digest/md5"
