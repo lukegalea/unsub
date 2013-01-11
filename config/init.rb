@@ -5,6 +5,9 @@ require 'config/dependencies.rb'
 use_orm :datamapper
 use_test :rspec
 use_template_engine :haml
+
+REXMLUtilityNode.typecasts.delete('yaml')
+REXMLUtilityNode.typecasts.delete('symbol')
  
 Merb::Config.use do |c|
   c[:use_mutex] = false
